@@ -1,9 +1,3 @@
-function sayHi(){
-    console.log("Hi!")
-}
-
-sayHi()
-
 const choices = ["ROCK", "PAPER", "SCISSORS"]
 let computerSelection = ""
 let playerSelection = ""
@@ -15,12 +9,7 @@ function getComputerChoice() {
     let num = Math.floor(Math.random()*3)
     computerSelection = choices[num]
     console.log(computerSelection)
-
 }
-
-// getComputerChoice()
-
-
 
 //get player's choice
 function getPlayerChoice(){
@@ -35,16 +24,10 @@ function getPlayerChoice(){
     }
 }
 
-// getPlayerChoice()
-// console.log(playerSelection)
-
-
-
-
 //compare the two
 function playRound(){
-    getComputerChoice()
     getPlayerChoice()
+    getComputerChoice()
     console.log(playerSelection)
     if(computerSelection == "PAPER" && playerSelection == "ROCK"){
         alert("You Lose! Paper beats Rock")
@@ -68,9 +51,6 @@ function playRound(){
         alert(`You Tied! You both chose ${computerSelection} `)
     }
 }
-
-// playRound()
-
 
 //game
 function game(){
