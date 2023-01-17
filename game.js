@@ -4,6 +4,17 @@ let playerSelection = ""
 let playerScore = 0
 let computerScore = 0
 
+let scoreBoard = document.getElementById("score")
+let compScore = document.getElementById("compScore")
+let userScore = document.getElementById("userScore")
+
+let rock = document.getElementById("rock")
+let paper = document.getElementById("paper")
+let scissors = document.getElementById("scissors")
+rock.addEventListener("click", function(){playRound("rock")})
+paper.addEventListener("click", function(){playRound("paper")})
+scissors.addEventListener("click", function(){playRound("scissors")})
+
 //get computer's choice
 function getComputerChoice() {
     let num = Math.floor(Math.random()*3)
@@ -11,60 +22,60 @@ function getComputerChoice() {
     console.log(computerSelection)
 }
 
-//get player's choice
-function getPlayerChoice(){
-    let answer = prompt("Choose rock, paper, or scissors!")
-    let finalAnswer = answer.toUpperCase()
-    if(finalAnswer === "ROCK" || finalAnswer === "PAPER" || finalAnswer === "SCISSORS") {
-        alert(`You chose ${finalAnswer}`)
-        return playerSelection = finalAnswer
-    }else {
-        alert("Make sure to spell it right!")
-        getPlayerChoice()
-    }
-}
-
-//compare the two
-function playRound(){
-    getPlayerChoice()
+//play a round of the game
+function playRound(answer){
+    playerSelection = answer
     getComputerChoice()
     console.log(playerSelection)
-    if(computerSelection == "PAPER" && playerSelection == "ROCK"){
-        alert("You Lose! Paper beats Rock")
+    if(computerSelection == "PAPER" && playerSelection == "rock"){
+        scoreBoard.innerHTML ="You Lose! Paper beats Rock"
         computerScore++
-    } else if(computerSelection == "ROCK" && playerSelection == "SCISSORS"){
-        alert("You Lose! Rock beats Scissors")
+    } else if(computerSelection == "ROCK" && playerSelection == "scissors"){
+        scoreBoard.innerHTML ="You Lose! Rock beats Scissors"
         computerScore++
-    } else if(computerSelection == "SCISSORS" && playerSelection == "PAPER"){
-        alert("You Lose! Scissors beats Paper")
+    } else if(computerSelection == "SCISSORS" && playerSelection == "paper"){
+        scoreBoard.innerHTML ="You Lose! Scissors beats Paper"
         computerScore++
-    } else if(computerSelection == "ROCK" && playerSelection == "PAPER"){
-        alert("You Win! Paper beats Rock")
+    } else if(computerSelection == "ROCK" && playerSelection == "paper"){
+        scoreBoard.innerHTML ="You Win! Paper beats Rock"
         playerScore++
-    } else if(computerSelection == "SCISSORS" && playerSelection == "ROCK"){
-        alert("You Win! Rock beats Scissors")
+    } else if(computerSelection == "SCISSORS" && playerSelection == "rock"){
+        scoreBoard.innerHTML ="You Win! Rock beats Scissors"
         playerScore++
-    } else if(computerSelection == "PAPER" && playerSelection == "SCISSORS"){
-        alert("You Win! Scissors beats Paper")
+    } else if(computerSelection == "PAPER" && playerSelection == "scissors"){
+        scoreBoard.innerHTML ="You Win! Scissors beats Paper"
         playerScore++
     } else {
-        alert(`You Tied! You both chose ${computerSelection} `)
+        scoreBoard.innerHTML =`You Tied! You both chose ${computerSelection} `
+    }
+    compScore.innerText = "Computer Score: " + computerScore
+    userScore.innerHTML = "Player Score: " + playerScore
+    scoreCheck()
+}
+
+//check to see if score has reached 5
+function scoreCheck(){
+    if(computerScore === 5 || playerScore === 5) {
+        if (computerScore > playerScore) {
+            scoreBoard.innerHTML = `You lost overall, ${computerScore} to ${playerScore}`
+            setNewGame()
+            return
+        } else if (computerScore < playerScore) {
+            scoreBoard.innerHTML = `You won overall, ${playerScore} to ${computerScore}`
+            setNewGame()
+            return
+        } else {
+            scoreBoard.innerHTML = "You tied overall"
+            setNewGame()
+            return
+        }
     }
 }
 
-//game
-function game(){
-    for(let i = 0; i < 5; i++){
-        playRound()
-        alert(`The score is computer: ${computerScore} to you: ${playerScore}`)
-    }
-    if (computerScore > playerScore) {
-        alert(`You lost overall, ${computerScore} to ${playerScore}`)
-    } else if (computerScore < playerScore) {
-        alert(`You won overall, ${playerScore} to ${computerScore}`)
-    } else {
-        alert("You tied overall")
-    }
+//clears the scores to start a new game 
+function setNewGame(){
+    computerSelection = ""
+    playerSelection = ""
+    playerScore = 0
+    computerScore = 0
 }
-
-game()
