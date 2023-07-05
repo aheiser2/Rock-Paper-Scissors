@@ -28,28 +28,28 @@ function playRound(answer){
     getComputerChoice()
     console.log(playerSelection)
     if(computerSelection == "PAPER" && playerSelection == "rock"){
-        scoreBoard.innerHTML ="You Lose! Paper beats Rock"
+        scoreBoard.innerHTML ="You Lose! PAPER beats ROCK"
         computerScore++
     } else if(computerSelection == "ROCK" && playerSelection == "scissors"){
-        scoreBoard.innerHTML ="You Lose! Rock beats Scissors"
+        scoreBoard.innerHTML ="You Lose! ROCK beats SCISSORS"
         computerScore++
     } else if(computerSelection == "SCISSORS" && playerSelection == "paper"){
-        scoreBoard.innerHTML ="You Lose! Scissors beats Paper"
+        scoreBoard.innerHTML ="You Lose! SCISSORS beats PAPER"
         computerScore++
     } else if(computerSelection == "ROCK" && playerSelection == "paper"){
-        scoreBoard.innerHTML ="You Win! Paper beats Rock"
+        scoreBoard.innerHTML ="You Win! PAPER beats ROCK"
         playerScore++
     } else if(computerSelection == "SCISSORS" && playerSelection == "rock"){
-        scoreBoard.innerHTML ="You Win! Rock beats Scissors"
+        scoreBoard.innerHTML ="You Win! ROCK beats SCISSORS"
         playerScore++
     } else if(computerSelection == "PAPER" && playerSelection == "scissors"){
-        scoreBoard.innerHTML ="You Win! Scissors beats Paper"
+        scoreBoard.innerHTML ="You Win! SCISSORS beats PAPER"
         playerScore++
     } else {
         scoreBoard.innerHTML =`You Tied! You both chose ${computerSelection} `
     }
-    compScore.innerText = "Computer Score: " + computerScore
-    userScore.innerHTML = "Player Score: " + playerScore
+    compScore.innerHTML = `Computer Score: ` + computerScore
+    userScore.innerHTML = `Player Score: ` + playerScore
     scoreCheck()
 }
 

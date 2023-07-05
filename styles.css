@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Eczar:wght@600&display=swap');
+
+body {
+    text-align: center;
+    font-family: 'Eczar', serif;
+    background-color: #14213D;
+    color: #FCA311;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 4em;
+}
+
+#buttonBox{
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+    width: 70%;
+}
+
+button {
+    font-family: 'Eczar', serif;
+    min-width: 125px;
+    width: 25%;
+    height: 80px;
+    font-size: 1.4em;
+    border-radius: 10px;
+    border: solid 2px white
+}
+
+#playerScores{
+    display: flex; 
+    justify-content: center;
+}
+
+#score{
+    font-size: 1.4em;
+}
+
+#userScore, #compScore {
+    font-size: 1.2em;
+    margin: 50px;
+    padding: 10px;
+    flex-shrink: 0;
+}
+
+#rock{
+    background-color: #000000;
+    color: #a0a0a0
+}
+
+#scissors{
+    background-color: #a0a0a0;
+    color: #FFFFFF
+}
+
+#paper{
+    background-color: #FFFFFF;
+    color: #000000
+}
+
